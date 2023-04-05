@@ -140,3 +140,5 @@ if controlnet:
     download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_seg-fp16.safetensors", controlnetModelsDir)
     download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_sketch-fp16.safetensors", controlnetModelsDir)
     download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_style-fp16.safetensors", controlnetModelsDir)
+
+sys.exit()
