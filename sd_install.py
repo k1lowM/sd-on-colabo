@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 import subprocess
+from distutils.util import strtobool
 
 # 引数解析
 ## 以下の辞書で値がTrueのオプションは、続けてその値を指定するもの
@@ -40,7 +41,7 @@ cmd = f'git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /conte
 subprocess.call(cmd, shell=True)
 
 # sd_dreambooth_extension のダウンロード
-dreambooth = bool(args['db'])
+dreambooth = strtobool(args['db'])
 if dreambooth:
   cmd = f'git clone https://github.com/d8ahazard/sd_dreambooth_extension.git /content/stable-diffusion-webui/extensions/sd_dreambooth_extension'
   subprocess.call(cmd, shell=True)
@@ -65,7 +66,7 @@ modelsDir = "/content/stable-diffusion-webui/models/Stable-diffusion"
 download_model("https://huggingface.co/CompVis/stable-diffusion-v-1-4-original/resolve/main/sd-v1-4-full-ema.ckpt", modelsDir)
 
 # v1.4以外の学習済みモデルをダウンロード
-learnedModel = bool(args['lm'])    # True = ダウンロードする，False = ダウンロードしない
+learnedModel = strtobool(args['lm'])    # True = ダウンロードする，False = ダウンロードしない
 
 if learnedModel:
   # stable-diffsion v2.1 model(768×768)のダウンロード
@@ -99,7 +100,7 @@ if learnedModel:
   #!aria2c --console-log-level=error -c -x 16 -s 16 -k 1M "https://civitai.com/api/download/models/11745" -d {modelsDir} -o "chilloutmix_NiPrunedFp32Fix.safetensors"
 
 # sd-webui-controlnetモデルをダウンロード
-controlnet = bool(args['cn'])    # True = controlnetが動く，False = controlnetが動かない
+controlnet = strtobool(args['cn'])    # True = controlnetが動く，False = controlnetが動かない
 controlnetHeavy = False
 controlnetLight = True
 
