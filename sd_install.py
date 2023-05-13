@@ -101,8 +101,6 @@ if learnedModel:
 
 # sd-webui-controlnetモデルをダウンロード
 controlnet = strtobool(args['cn'])    # True = controlnetが動く，False = controlnetが動かない
-controlnetHeavy = False
-controlnetLight = True
 
 controlnetModelsDir = "/content/stable-diffusion-webui/models/ControlNet"
 if controlnet:
@@ -110,36 +108,34 @@ if controlnet:
   cmd = f'git clone https://github.com/Mikubill/sd-webui-controlnet /content/stable-diffusion-webui/extensions/sd-webui-controlnet'
   subprocess.call(cmd, shell=True)
 
-  # 重量版
-  if controlnetHeavy:
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_canny.pth", controlnetModelsDir)
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_depth.pth", controlnetModelsDir)
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_hed.pth", controlnetModelsDir)
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_mlsd.pth", controlnetModelsDir)
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_normal.pth", controlnetModelsDir)
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_openpose.pth", controlnetModelsDir)
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_scribble.pth", controlnetModelsDir)
-    download_model("https://huggingface.co/lllyasviel/ControlNet/resolve/main/models/control_sd15_seg.pth", controlnetModelsDir)
-
-  # 軽量版をダウンロード
-  if controlnetLight:
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_canny-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_depth-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_hed-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_mlsd-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_normal-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_openpose-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_scribble-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/control_seg-fp16.safetensors", controlnetModelsDir)
-
-    # T2I-Adapter
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_canny-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_color-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_depth-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_keypose-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_openpose-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_seg-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_sketch-fp16.safetensors", controlnetModelsDir)
-    download_model("https://huggingface.co/webui/ControlNet-modules-safetensors/resolve/main/t2iadapter_style-fp16.safetensors", controlnetModelsDir)
+  # ControlNet 1.1
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11e_sd15_ip2p.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11e_sd15_ip2p.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11e_sd15_shuffle.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11e_sd15_shuffle.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1p_sd15_depth.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1p_sd15_depth.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_canny.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_inpaint.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_inpaint.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_lineart.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_lineart.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_mlsd.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_mlsd.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_normalbae.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_normalbae.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_openpose.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_openpose.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_scribble.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_scribble.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_seg.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_seg.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_softedge.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_softedge.yaml", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15s2_lineart_anime.pth", controlnetModelsDir)
+  download_model("https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15s2_lineart_anime.yaml", controlnetModelsDir)
 
 sys.exit()
