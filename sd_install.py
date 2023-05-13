@@ -32,10 +32,6 @@ print(f'positional argument:', sys.argv[1:])
 
 # ---------------------------------------------
 
-# torchのバージョンをwebui用に変更
-cmd = f'pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchtext==0.14.1 torchaudio==0.13.1 torchdata==0.5.1 --extra-index-url https://download.pytorch.org/whl/cu117'
-subprocess.call(cmd, shell=True)
-
 # webuiをインストール
 cmd = f'git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui /content/stable-diffusion-webui'
 subprocess.call(cmd, shell=True)
